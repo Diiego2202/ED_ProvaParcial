@@ -24,18 +24,12 @@ public class Main {
 		No aux = lista.inicio;
 		while(aux != null){
 			invertida.inserir(aux.dado);
-			aux = aux.dir;
-		}
-		aux = invertida.fim;
-		
-		do{
-			lista.inicio = aux;
-			System.out.println("-" + aux.dado);
-			aux = aux.esq;
-			lista.inicio = lista.inicio.dir;
 			
-		}while(aux!=null);	
-		invertida.imprimir();	
-		System.out.println("--");
+			aux = aux.dir;
+		}	
+		invertida.imprimir();
+		System.out.println("---");
+
+		lista = invertida;
 	}
 }
