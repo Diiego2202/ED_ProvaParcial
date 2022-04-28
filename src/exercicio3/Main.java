@@ -20,16 +20,12 @@ public class Main {
 	}
 	
 	public static void inverter(Lista lista) {
-		Lista invertida = new Lista();
-		No aux = lista.inicio;
-		while(aux != null){
-			invertida.inserir(aux.dado);
-			
-			aux = aux.dir;
-		}	
-		invertida.imprimir();
-		System.out.println("---");
-
-		lista = invertida;
+		No aux = lista.fim;
+		No no = aux;
+		while(aux!=null){
+			aux.dir = aux.esq;
+			aux = aux.esq;
+		}
+		lista.inicio = no;
 	}
 }
