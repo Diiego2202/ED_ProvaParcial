@@ -16,13 +16,29 @@ public class Lista {
 	//esse m�todo dever� ser implementado de acordo com o enunciado do exerc�cio
 	private void inserirPrioridade(No aux) {
 		if(aux.cor.equals("amarelo")){
-			if(inicio.numero > aux.numero){
+			No aux2 = inicio;
+			No verde=null;
+			No amarelo=null;
+			if(inicio == null){
+				inicio = fim = aux;
+			} else if(inicio.cor.equalsIgnoreCase("verde")){
 				aux.prox = inicio;
 				inicio = aux;
-			} else{
-				aux.prox = inicio.prox;
-				inicio.prox = aux;
+			}else{
+				while(aux2!=null){
+					if(aux2.cor.equalsIgnoreCase("verde")){
+						verde = aux2;
+						break;
+					}
+					amarelo = aux2;
+					aux2 = aux2.prox;
+					
+				}
+				amarelo.prox = aux;
+				aux.prox = verde;
+				
 			}
+
 			
 		}
 		

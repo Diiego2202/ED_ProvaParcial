@@ -9,25 +9,38 @@ public class Lista {
 	public void inserir(int dado) {
 		No aux = new No(dado);
 		if(inicio == null){
-			inicio = aux;
-			aux.esq = null;
-			aux.dir = null;
-			fim = aux;
+			inicio = fim = aux;
+		} else if(inicio == fim){
+			if(aux.dado > inicio.dado){
+				fim = aux;
+				inicio.dir = aux;
+				aux.esq = inicio;
+			}else{
+				inicio = aux;
+				aux.dir = fim;
+				fim.esq = aux;
+			}
 		} else{
-			No no = inicio;
-			while(no != null) {
-				if(no.dado > aux.dado){
-					aux.esq = null;
-					aux.dir = inicio;
-					inicio.esq = aux;
-					inicio = aux;
-				} else{
-					aux.dir = null;
-					aux.esq = fim;
-					fim.dir = aux;
-					fim = aux;
+			No aux2 = inicio;
+			while(aux2!=null){
+				if(aux.dado > aux2.dado){
+					if(aux2 == fim){
+						fim.dir = aux;
+						aux.esq = fim.esq;
+						fim.esq = aux;
+						fim = aux;
+					}
+					aux.esq = aux2;
+					aux.dir = aux2.dir;
+					aux2.dir.esq = aux;
+					aux2.dir = aux;	
 				}
-				aux = aux.dir;
+				aux2 = aux2.dir;
+			}
+			if(aux.dir == null || aux.esq == null){
+				inicio.esq = aux;
+				aux.dir = inicio;
+				inicio = aux;
 			}
 		}
 	}
