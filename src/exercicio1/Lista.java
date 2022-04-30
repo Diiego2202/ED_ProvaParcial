@@ -35,13 +35,9 @@ public class Lista {
 					
 				}
 				amarelo.prox = aux;
-				aux.prox = verde;
-				
+				aux.prox = verde;	
 			}
-
-			
-		}
-		
+		}	
 	}
 	
 	// m�todo inserir. Esse m�todo ser� chamado a partir da classe Main
