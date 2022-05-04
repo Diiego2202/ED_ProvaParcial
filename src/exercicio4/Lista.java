@@ -12,7 +12,7 @@ public class Lista {
 
 		if(inicio == null){
 			inicio = fim = aux;
-		} else if(aux.dado > fim.dado){
+		} else if(aux.dado >= fim.dado){
 			fim.dir = aux;
 			aux.esq = fim;
 			fim = aux;
